@@ -1,0 +1,10 @@
+RewriteEngine on
+# redirection de api/posts/1/comments vers index.php?route=comments&id_post=1
+RewriteRule ^api/posts/([0-9]+)/comments$ index.php?route=comments&id_post=$1 [L]
+# redirection de api/test/5 vers index.php?route=test&id5
+RewriteRule ^api/([a-zA-Z]+)/([0-9]+)$ index.php?route=$1&id=$2 [L]
+# redirection de api/test vers index.php?route=test
+RewriteRule ^api/([a-zA-Z]+)$ index.php?route=$1 [L]
+
+# récuperer les Authorization dans la variable $_SERVER (à cause de MAMP)
+SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
